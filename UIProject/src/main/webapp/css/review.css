@@ -1,0 +1,442 @@
+@charset "UTF-8";
+
+* {
+  border: 0;
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+form{
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+:root {
+  --bg: #e3e4e8;
+  --fg: #17181c;
+  --primary: #255ff4;
+  --yellow: #f4a825;
+  --yellow-t: rgba(244, 168, 37, 0);
+  --bezier: cubic-bezier(0.42,0,0.58,1);
+  --trans-dur: 0.3s;
+  font-size: calc(24px + (30 - 24) * (100vw - 320px) / (1280 - 320));
+}
+
+body {
+  color: var(--fg);
+  font: 1em/1.5 "DM Sans", sans-serif;
+  display: flex;
+  height: 100vh;
+  transition: background-color var(--trans-dur), color var(--trans-dur);
+  background: url(../image/mbg.jpg) no-repeat center top;
+	background-size: cover;
+}
+
+.rating {
+  margin: auto;
+}
+.rating__display {
+  font-size: 0.8em; /* 원하는 크기로 조정해주세요 */
+  font-weight: 500;
+  min-height: 1.25em;
+  position: absolute;
+  top: 100%;
+  width: 100%;
+  text-align: center;
+}
+.rating__stars {
+  display: flex;
+  padding-bottom: 0.375em;
+  position: relative;
+}
+.rating__star {
+  display: block;
+  overflow: visible;
+  pointer-events: none;
+  width: 2em;
+  height: 2em;
+}
+.rating__star-ring, .rating__star-fill, .rating__star-line, .rating__star-stroke {
+  animation-duration: 1s;
+  animation-timing-function: ease-in-out;
+  animation-fill-mode: forwards;
+}
+.rating__star-ring, .rating__star-fill, .rating__star-line {
+  stroke: var(--yellow);
+}
+.rating__star-fill {
+  fill: var(--yellow);
+  transform: scale(0);
+  transition: fill var(--trans-dur) var(--bezier), transform var(--trans-dur) var(--bezier);
+}
+.rating__star-stroke {
+  stroke: #c7cad1;
+  transition: stroke var(--trans-dur);
+}
+.rating__label {
+  cursor: pointer;
+  padding: 0.125em;
+}
+.rating__label--delay1 .rating__star-ring, .rating__label--delay1 .rating__star-fill, .rating__label--delay1 .rating__star-line, .rating__label--delay1 .rating__star-stroke {
+  animation-delay: 0.05s;
+}
+.rating__label--delay2 .rating__star-ring, .rating__label--delay2 .rating__star-fill, .rating__label--delay2 .-line, .rating__label--delay2 .-stroke {
+  animation-delay: 0.1s;
+}
+.rating__label--delay3 .rating__star-ring, .rating__label--delay3 .rating__star-fill, .rating__label--delay3 .rating__star-line, .rating__label--delay3 .rating__star-stroke {
+  animation-delay: 0.15s;
+}
+.rating__label--delay4 .rating__star-ring, .rating__label--delay4 .rating__star-fill, .rating__label--delay4 .rating__star-line, .rating__label--delay4 .rating__star-stroke {
+  animation-delay: 0.2s;
+}
+.rating__input {
+  -webkit-appearance: none;
+  appearance: none;
+}
+.rating__input:hover ~ [data-rating]:not([hidden]) {
+  display: none;
+}
+.rating__input-1:hover ~ [data-rating="1"][hidden], .rating__input-2:hover ~ [data-rating="2"][hidden], .rating__input-3:hover ~ [data-rating="3"][hidden], .rating__input-4:hover ~ [data-rating="4"][hidden], .rating__input-5:hover ~ [data-rating="5"][hidden], .rating__input:checked:hover ~ [data-rating]:not([hidden]) {
+  display: block;
+}
+.rating__input-1:hover ~ .rating__label:first-of-type .rating__star-stroke, .rating__input-2:hover ~ .rating__label:nth-of-type(-n + 2) .rating__star-stroke, .rating__input-3:hover ~ .rating__label:nth-of-type(-n + 3) .rating__star-stroke, .rating__input-4:hover ~ .rating__label:nth-of-type(-n + 4) .rating__star-stroke, .rating__input-5:hover ~ .rating__label:nth-of-type(-n + 5) .rating__star-stroke {
+  stroke: var(--yellow);
+  transform: scale(1);
+}
+.rating__input-1:checked ~ .rating__label:first-of-type .rating__star-ring, .rating__input-2:checked ~ .rating__label:nth-of-type(-n + 2) .rating__star-ring, .rating__input-3:checked ~ .rating__label:nth-of-type(-n + 3) .rating__star-ring, .rating__input-4:checked ~ .rating__label:nth-of-type(-n + 4) .rating__star-ring, .rating__input-5:checked ~ .rating__label:nth-of-type(-n + 5) .rating__star-ring {
+  animation-name: starRing;
+}
+.rating__input-1:checked ~ .rating__label:first-of-type .rating__star-stroke, .rating__input-2:checked ~ .rating__label:nth-of-type(-n + 2) .rating__star-stroke, .rating__input-3:checked ~ .rating__label:nth-of-type(-n + 3) .rating__star-stroke, .rating__input-4:checked ~ .rating__label:nth-of-type(-n + 4) .rating__star-stroke, .rating__input-5:checked ~ .rating__label:nth-of-type(-n + 5) .rating__star-stroke {
+  animation-name: starStroke;
+}
+.rating__input-1:checked ~ .rating__label:first-of-type .rating__star-line, .rating__input-2:checked ~ .rating__label:nth-of-type(-n + 2) .rating__star-line, .rating__input-3:checked ~ .rating__label:nth-of-type(-n + 3) .rating__star-line, .rating__input-4:checked ~ .rating__label:nth-of-type(-n + 4) .rating__star-line, .rating__input-5:checked ~ .rating__label:nth-of-type(-n + 5) .rating__star-line {
+  animation-name: starLine;
+}
+.rating__input-1:checked ~ .rating__label:first-of-type .rating__star-fill, .rating__input-2:checked ~ .rating__label:nth-of-type(-n + 2) .rating__star-fill, .rating__input-3:checked ~ .rating__label:nth-of-type(-n + 3) .rating__star-fill, .rating__input-4:checked ~ .rating__label:nth-of-type(-n + 4) .rating__star-fill, .rating__input-5:checked ~ .rating__label:nth-of-type(-n + 5) .rating__star-fill {
+  animation-name: starFill;
+}
+.rating__input-1:not(:checked):hover ~ .rating__label:first-of-type .rating__star-fill, .rating__input-2:not(:checked):hover ~ .rating__label:nth-of-type(2) .rating__star-fill, .rating__input-3:not(:checked):hover ~ .rating__label:nth-of-type(3) .rating__star-fill, .rating__input-4:not(:checked):hover ~ .rating__label:nth-of-type(4) .rating__star-fill, .rating__input-5:not(:checked):hover ~ .rating__label:nth-of-type(5) .rating__star-fill {
+  fill: var(--yellow-t);
+}
+.rating__sr {
+  clip: rect(1px, 1px, 1px, 1px);
+  overflow: hidden;
+  position: absolute;
+  width: 1px;
+  height: 1px;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #17181c;
+    --fg: #e3e4e8;
+  }
+
+  .rating {
+    margin: auto;
+  }
+  .__star-stroke {
+    stroke: #454954;
+  }
+}
+@keyframes starRing {
+  from, 20% {
+    animation-timing-function: ease-in;
+    opacity: 1;
+    r: 8px;
+    stroke-width: 16px;
+    transform: scale(0);
+  }
+  35% {
+    animation-timing-function: ease-out;
+    opacity: 0.5;
+    r: 8px;
+    stroke-width: 16px;
+    transform: scale(1);
+  }
+  50%, to {
+    opacity: 0;
+    r: 16px;
+    stroke-width: 0;
+    transform: scale(1);
+  }
+}
+@keyframes starFill {
+  from, 40% {
+    animation-timing-function: ease-out;
+    transform: scale(0);
+  }
+  60% {
+    animation-timing-function: ease-in-out;
+    transform: scale(1.2);
+  }
+  80% {
+    transform: scale(0.9);
+  }
+  to {
+    transform: scale(1);
+  }
+}
+@keyframes starStroke {
+  from {
+    transform: scale(1);
+  }
+  20%, to {
+    transform: scale(0);
+  }
+}
+@keyframes starLine {
+  from, 40% {
+    animation-timing-function: ease-out;
+    stroke-dasharray: 1 23;
+    stroke-dashoffset: 1;
+  }
+  60%, to {
+    stroke-dasharray: 12 12;
+    stroke-dashoffset: -12;
+  }
+}
+
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed,
+figure, figcaption, footer, header, hgroup,
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font: inherit;
+  font-size: 100%;
+  vertical-align: baseline;
+}
+
+
+
+html {
+  line-height: 1;
+}
+
+ol, ul {
+  list-style: none;
+}
+
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+caption, th, td {
+  text-align: left;
+  font-weight: normal;
+  vertical-align: middle;
+}
+
+q, blockquote {
+  quotes: none;
+}
+q:before, q:after, blockquote:before, blockquote:after {
+  content: "";
+  content: none;
+}
+
+a img {
+  border: none;
+}
+
+article, aside, details, figcaption, figure, footer, header, hgroup, main, menu, nav, section, summary {
+  display: block;
+}
+
+
+* {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+body {
+  text-align: center;
+  font-family: "Lato", "sans-serif";
+  font-weight: 400;
+}
+
+a {
+  text-decoration: none;
+}
+
+header, form {
+  padding: 4em 10%;
+}
+
+header {
+  background-color: #077ABC;
+  color: white;
+}
+header h1 {
+  font-weight: 400;
+  text-transform: uppercase;
+  font-size: 50px;
+  margin-bottom: 10px;
+}
+header h1 i {
+  color: #055a8b;
+}
+header h1 span {
+  font-weight: 300;
+}
+header p {
+  font-weight: 400;
+  font-size: 16px;
+  color: rgba(255, 255, 255, 0.9);
+  letter-spacing: 0.05em;
+  margin-bottom: 10px;
+}
+header h3,
+header h3 a {
+  color: #32CCFE;
+}
+header h3 a,
+header h3 a a {
+  -webkit-transition: color 0.3s;
+  -moz-transition: color 0.3s;
+  -o-transition: color 0.3s;
+  transition: color 0.3s;
+}
+header h3 a:hover,
+header h3 a a:hover {
+  color: white;
+}
+
+.form-group {
+  margin-bottom: 20px;
+  display: flex;
+  flex-direction: column;
+}
+
+h2.heading {
+  font-size: 18px;
+  text-transform: uppercase;
+  font-weight: 300;
+  text-align: left;
+  color: #506982;
+  border-bottom: 1px solid #506982;
+  padding-bottom: 3px;
+  margin-bottom: 20px;
+}
+
+.controls {
+  text-align: left;
+  position: relative;
+}
+.controls input[type=text],
+.controls input[type=email],
+.controls input[type=tel],
+.controls textarea,
+.controls button,
+.controls select {
+  padding: 12px;
+  font-size: 14px;
+  border: 1px solid #c6c6c6;
+  width: 100%;
+  margin-bottom: 18px;
+  color: #888;
+  font-family: "Lato", "sans-serif";
+  font-size: 16px;
+  font-weight: 300;
+  background-color: #fff;
+  -webkit-border-radius: 2px;
+  -moz-border-radius: 2px;
+  -ms-border-radius: 2px;
+  -o-border-radius: 2px;
+  border-radius: 2px;
+  -webkit-transition: all 0.3s;
+  -moz-transition: all 0.3s;
+  -o-transition: all 0.3s;
+  transition: all 0.3s;
+}
+.controls input[type=text]:focus, .controls input[type=text]:hover,
+.controls input[type=email]:focus,
+.controls input[type=email]:hover,
+.controls input[type=tel]:focus,
+.controls input[type=tel]:hover,
+.controls textarea:focus,
+.controls textarea:hover,
+.controls button:focus,
+.controls button:hover,
+.controls select:focus,
+.controls select:hover {
+  outline: none;
+  border-color: #9FB1C1;
+}
+.controls input[type=text]:focus + label, .controls input[type=text]:hover + label,
+.controls input[type=email]:focus + label,
+.controls input[type=email]:hover + label,
+.controls input[type=tel]:focus + label,
+.controls input[type=tel]:hover + label,
+.controls textarea:focus + label,
+.controls textarea:hover + label,
+.controls button:focus + label,
+.controls button:hover + label,
+.controls select:focus + label,
+.controls select:hover + label {
+  color: #077ABC;
+  cursor: text;
+}
+.controls .fa-sort {
+  position: absolute;
+  right: 10px;
+  top: 17px;
+  color: #999;
+}
+.controls select {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  cursor: pointer;
+}
+.controls label {
+  position: absolute;
+  left: 8px;
+  top: 12px;
+  color: #999;
+  font-size: 16px;
+  display: inline-block;
+  padding: 4px 10px;
+  font-weight: 400;
+  background-color: rgba(255, 255, 255, 0);
+  pointer-events: none;
+  -webkit-transition: color 0.3s, top 0.3s, background-color 0.8s;
+  -moz-transition: color 0.3s, top 0.3s, background-color 0.8s;
+  -o-transition: color 0.3s, top 0.3s, background-color 0.8s;
+  transition: color 0.3s, top 0.3s, background-color 0.8s;
+}
+.controls label.active {
+  top: -11px;
+  color: #555;
+  background-color: white;
+}
+.controls textarea {
+  resize: none;
+  height: 200px;
+}
+.controls button {
+  cursor: pointer;
+  background-color: #07B3A1;
+  border: none;
+  color: #fff;
+  padding: 12px 0;
+}
+.controls button:hover {
+  background-color: #08ccb7;
+}

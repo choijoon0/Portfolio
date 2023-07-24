@@ -1,0 +1,174 @@
+
+#search{
+	width : 300px;
+}
+
+.bg{
+	
+	width: 100%;
+	height: 100%;
+	top: 0px;
+	left: 0px;
+	background: url(../image/mbg.jpg) no-repeat center top;
+	background-size: cover;
+}
+
+
+.he{
+	height: 20px;
+}
+
+* {
+	padding: 0;
+	margin: 0
+}
+
+.menu li {
+	list-style: none
+}
+
+a {
+	text-decoration: none;
+	font-size: 14px
+}
+
+.menu {
+	width: 800px;
+	overflow: hidden;
+	margin: auto;
+}
+
+.menu>li {
+	width: 16%; /*20*5=100%*/
+	float: left;
+	text-align: center;
+	line-height: 40px;
+	background-color: rgb(85, 83, 77);
+}
+
+.menu a {
+	color: #fff;
+}
+
+.submenu>li {
+	line-height: 50px;
+	background-color: rgb(192, 192, 192);
+}
+
+.submenu {
+	height: 0; /*ul의 높이를 안보이게 처리*/
+	overflow: hidden;
+}
+
+.menu>li:hover {
+	background-color: rgb(192, 192, 192);
+	transition-duration: 0.5s;
+}
+
+.menu>li:hover .submenu {
+	height: 200px; /*서브메뉴 li한개의 높이 50*5*/
+	transition-duration: 1s;
+}
+
+ #carouselExampleIndicators img {
+	max-width: 40%;
+	height: 500px;
+	margin: auto;
+}
+ #carouselExampleIndicators2 img {
+	max-width: 40%;
+	height: 500px;
+	margin: auto;
+} 
+ #carouselExampleIndicators3 img {
+	max-width: 40%;
+	height: 500px;
+	margin: auto;
+} 
+ #carouselExampleIndicators4 img {
+	max-width: 40%;
+	height: 500px;
+	margin: auto;
+} 
+ #carouselExampleIndicators5 img {
+	max-width: 40%;
+	height: 500px;
+	margin: auto;
+} 
+
+ #carouselExampleIndicators6 img {
+	max-width: 40%;
+	height: 500px;
+	margin: auto;
+} 
+
+.net {
+	text-align: center;
+}
+.net2 {
+	text-align: center;
+}
+
+.net img {
+	width: 100px;
+	height: 50px;
+}
+.net2 img {
+	width: 150px;
+	height: 80px;
+}
+
+.container {
+	width: 70%;
+	
+}
+
+.fomr-inline a{
+	font-size: 20px;
+}
+
+/* 자동 완성 */
+.autocomplete {
+  position: relative;
+  display: inline-block;
+}
+
+input {
+  border: 1px solid transparent;
+  background-color: #f1f1f1;
+  padding: 10px;
+  font-size: 16px;
+}
+
+input[type=text] {
+  background-color: #f1f1f1;
+  width: 100%;
+}
+
+
+.autocomplete-items {
+  position: absolute;
+  border: 1px solid #d4d4d4;
+  border-bottom: none;
+  border-top: none;
+  z-index: 99;
+  top: 100%;
+  left: 0;
+  right: 0;
+}
+
+.autocomplete-items div {
+  padding: 10px;
+  cursor: pointer;
+  background-color: #fff; 
+  border-bottom: 1px solid #d4d4d4; 
+}
+
+.autocomplete-items div:hover {
+  background-color: #e9e9e9; 
+}
+
+.autocomplete-active {
+  background-color: DodgerBlue !important; 
+  color: #ffffff; 
+}

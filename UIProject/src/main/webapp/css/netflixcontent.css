@@ -1,0 +1,32 @@
+@charset "UTF-8";
+
+body{
+	
+	width: 100%;
+	height: 100%;
+	top: 0px;
+	left: 0px;
+	background: url(../image/bg.jpg) no-repeat center top;
+	background-size: cover;
+}
+
+.inmod {
+	float : left;
+}
+
+.ifr{
+	width: 577px;
+	height: 265px;
+}
+
+.modal-content {
+	background-color: black;
+	color:white;
+}
+
+.modal-content th{
+	font-weight: bold;
+	font-style: italic;
+	font-size: 20px;
+}
+

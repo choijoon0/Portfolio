@@ -1,0 +1,36 @@
+@charset "UTF-8";
+
+.content {
+	background: silver;
+	height: 50px;
+	width: 200px;
+	border-radius: 15px;
+	float : left;
+	text-align: center;
+	
+}
+
+
+.content2 {
+	background: silver;
+	height: 50px;
+	width: 200px;
+	border-radius: 15px;
+	float : left;
+	text-align: center;
+	margin-left: 55px;
+}
+
+body{
+
+	background: url(../image/mbg.jpg);
+	background-size: cover;
+}
+
+.he{
+	height: 50px;
+}
+
+.t{
+	height: 100px;
+}
